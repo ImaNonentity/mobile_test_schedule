@@ -250,10 +250,12 @@ body.dark-mode .dark-mode-text {
           const [selectedArtist, setSelectedArtist] = useState(null);
           const [selectedSlot, setSelectedSlot] = useState(null);
           const [showPastPerformances, setShowPastPerformances] = useState(true);
-          const [isDarkMode, setIsDarkMode] = useState(false);
+          const [isDarkMode, setIsDarkMode] = useState(true);
 
 
-
+            useEffect(() => {
+              document.body.classList.add('dark-mode');
+            }, []);
           // Reset slot when day changes
           useEffect(() => {
               setSelectedSlot(null);
@@ -732,7 +734,7 @@ React.createElement('div', {
 
             React.createElement('div', { className: 'mt-12 bg-black/50 backdrop-blur-sm border-t border-purple-500/30 p-6' },
               React.createElement('div', { className: 'max-w-6xl mx-auto text-center text-purple-300' },
-                React.createElement('p', { className: 'text-sm' }, `Festival Schedule • Real-time updates • ${selectedDay === '22.08' ? 'Saturday' : 'Sunday'}`)
+                React.createElement('p', { className: 'text-sm' }, `✨HOPE YOU HAD A GREAT TIME!✨`)
               )
             )
           );
