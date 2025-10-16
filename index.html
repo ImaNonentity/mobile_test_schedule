@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRAVE FACTORY Festival Schedule</title>
+    <title>BLACK FACTORY Festival Schedule</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -46,9 +46,13 @@ body.dark-mode .dark-mode-text {
 }
 
     @font-face {
-        font-family: 'LCDNova';
-        src: url('./a_LCDNova.ttf') format('truetype');
-    }
+    font-family: 'LCDNova';
+    src: url('./a_LCDNova.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
     .live-box-bg {
         position: relative;
         overflow: hidden;
@@ -155,7 +159,7 @@ body.dark-mode .dark-mode-text {
     }
        body {
         margin: 0;
-        font-family: 'MyCustomFont', system-ui, -apple-system, sans-serif;
+        font-family: 'LCDNova', system-ui, -apple-system, sans-serif;
         background-image: url('https://static-image-2.s3.us-west-1.amazonaws.com/blog_images/photo_2025-08-21_21-47-57.jpg');
         background-size: cover;
         background-position: center;
@@ -314,8 +318,6 @@ body.dark-mode .dark-mode-text {
             switch (type) {
               case 'live': return React.createElement('svg', { className: iconStyle + ' text-purple-500', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z' }));
               case 'dj': return React.createElement('svg', { className: iconStyle + ' text-blue-500', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M16 4c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8m0-2C9.37 2 4 7.37 4 14s5.37 12 12 12 12-5.37 12-12S22.63 2 16 2z' }));
-              case 'film': return React.createElement('svg', { className: iconStyle + ' text-red-500', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z' }));
-              case 'performance': return React.createElement('svg', { className: iconStyle + ' text-green-500', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M16 4c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8m0-2C9.37 2 4 7.37 4 14s5.37 12 12 12 12-5.37 12-12S22.63 2 16 2z' }));
               default: return null;
             }
           };
@@ -324,8 +326,6 @@ body.dark-mode .dark-mode-text {
             switch (type) {
               case 'live': return 'border-l-purple-500 bg-purple-50';
               case 'dj': return 'border-l-blue-500 bg-blue-50';
-              case 'film': return 'border-l-red-500 bg-red-50';
-              case 'performance': return 'border-l-green-500 bg-green-50';
               default: return 'border-l-gray-300 bg-gray-50';
             }
           };
