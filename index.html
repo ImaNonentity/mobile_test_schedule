@@ -246,7 +246,7 @@ body.dark-mode .dark-mode-text {
         const FestivalSchedule = () => {
           const [currentTime, setCurrentTime] = useState(new Date());
           const [selectedVenue, setSelectedVenue] = useState('ALL');
-          const [selectedDay, setSelectedDay] = useState('22.08');
+          const [selectedDay, setSelectedDay] = useState('23.08');
           const [selectedArtist, setSelectedArtist] = useState(null);
           const [selectedSlot, setSelectedSlot] = useState(null);
           const [showPastPerformances, setShowPastPerformances] = useState(true);
@@ -270,69 +270,41 @@ body.dark-mode .dark-mode-text {
           }, []);
 
           const festivalData = {
-           '22.08': [
-              { time: '08:00', venue: 'BLACK BOX', artist: 'GAPON & MONOTRONIQUE', type: 'dj', description: 'Суботнє відкриття найбільш непередбачуваного стейджу Брейву у руках харків’ян: і Сашко, і Рома є резидентами культового клубу “Zhivot”. Кросжанрова вінілова подорож від двох найсильніших харківських селекторів — на перший виступ суботи варто взяти пляшку води.' },
-              { time: '08:00', venue: 'DEPO', artist: 'LISOVSKYI', type: 'dj', description: 'Київський диджей, продюсер, засновник вінілових лейблів FIB Records і Lisopylka Records відкриватиме суботню вечірку в компанії глітчу, мінімалу і теку, що жартуватимуть із слухачем поміж зведенням платівок між собою.' },
-              { time: '08:00', venue: 'GARDEN', artist: 'HAARHI & NOTA YANVARSKA', type: 'dj', description: 'Суботнє відкриття танцполу серед дерев у руках співзасновників формації THP, котра незабаром святкуватиме свій 10-й день народження. Минулорічний сет хлопців на Брейві був різнобарвною анімацією для тих, хто приїхав на початку. Нічого нового: the ongoing WOW is happening right NOW.' },
-              { time: '08:00', venue: 'AUDITORIUM', artist: 'ЕЛЕКТРОСЕСТРИ (кінопоказ)', type: 'film', description: 'Електросестри — реж. Ліза Ровнер, 2021, 86‘\n' +
-                      'Суботу відкриватиме фільм-триб’ют жінкам, які створювали електронну музику в умовах, коли вся увага та слава діставалась чоловікам. Найвідоміший джинґл кока-коли, футуристична заставка до серіалу «Доктор Хто» і саундтреки до фільмів Кубріка — еволюція звуку завдячує жіночій принциповості та боротьбі.' },
-              { time: '10:00', venue: 'DEPO', artist: 'DJ KOOLT (UY)', type: 'dj', description: 'Диджей-ікона Південної Америки і резидент уругвайського клубу Phonoteque показуватиме своє святкове кіно на танцполі під сонцем. Чи варто йти на фестиваль тільки заради одного артиста — більшість уругвайських слухачів знають відповідь, котру українці сформулюють для себе самі.' },
-              { time: '10:00', venue: 'ANGAR', artist: 'SERGE JAZZMATE', type: 'dj', description: 'Київський диджей і резидент ∄ відкриватиме найбільший танцпол фестивалю 2,5-годинним сетом. Нескінченні черги на Кирилівську і в АБО на його виступи є традицією — місця в Ангарі має вистачити, щоб побити нові рекорди.' },
-              { time: '10:30', venue: 'PAVILLION 4', artist: 'HILLMER - LIVE', type: 'live', description: 'Музикант і кліпмейкер, засновник Demure Records, відкриє знімальний день у Pavillion 4 півторагодинним лайвом з нового й невиданого матеріалу — меланхолійним, сентиментальним, атмосферним.' },
-              { time: '11:00', venue: 'BLACK BOX', artist: 'SAXR - LIVE', type: 'live', description: 'Новий лайв Дениса Кравченка матиме ексклюзивну фестивальну прем’єру. Співзасновник Protagoniste Store і Some People пише музику, створює лінії одягу разом з пошуком нових модулярів у сетап. Естетика у кожній літері цього слова — це SAXR himself.' },
-              { time: '11:00', venue: 'GARDEN', artist: 'МС РЕП - LIVE', type: 'live', description: '' },
-              { time: '11:00', venue: 'AUDITORIUM', artist: 'MARYANA KLOCHKO - LIVE', type: 'live', description: '' },
-              { time: '12:00', venue: 'BLACK BOX', artist: 'DJ PLEAD (AU)', type: 'dj', description: 'Довгоочікуваний приїзд австралійця у Київ — одна з причин розгорнути червону доріжку. Самобутність Джарреда, релізи на «Dekmantel», регулярні фестивальні сети на Draaimolen Festival і Berlin Atonal — please, take my money; we are going for it!' },
-              { time: '12:00', venue: 'PAVILLION 4', artist: 'THE DARK WOOD - LIVE', type: 'live', description: 'Ігор Smailov, київський диджей і промоутер, презентує дебютний альбом Orpheus під новим аліасом The Dark Wood. Виданий на 2064年 Recordings і створений разом з Shadow Unit реліз стане ще однією прем’єрою танцполу №4.' },
-              { time: '12:00', venue: 'GARDEN', artist: 'КОШИК МЕЛОДІЙ', type: 'dj', description: 'Правобережний колекціонер платівок Macka гратиме секретним тріо, відданим ідеї просвітництва через звук. Український та закордонний фанк, соул і хіп-хоп — кошик не має обличчя, оскільки мистецтво належить всім!' },
-              { time: '12:30', venue: 'DEPO', artist: 'BOGDAN ZAIETS - LIVE', type: 'live', description: 'Продюсер, співзасновник школи диджеїнгу Kultura Zvuku та музичний ментор у Module Exchange презентуватиме нову лайв-програму з посмішкою і новим синтезатором Moog — згадка про минулорічний виступ Богдана на Брейві гріє сильніше, ніж глінтвейн узимку.\n' },
-              { time: '12:30', venue: 'AUDITORIUM', artist: 'KATARINA GRYVUL - LIVE', type: 'live', description: 'Українська композиторка й продюсерка презентуватиме аудио-візуальний перформанс «SPOMYN» — мікс академічної і експериментальної електроніки, що закарбовується у спогадах.' },
-              { time: '12:30', venue: 'ANGAR', artist: 'PARANOID LONDON (UK) - LIVE', type: 'live', description: 'Лайв британців Квінна Уеллея та Джерардо Делгадо для багатьох є найочікуванішим виступом цьогорічного Brave Factory Festival. Щоб зняти власне кіно дует везе армаду синтезаторів і драм-машин Roland — для суботніх танців точно знадобиться зручне взуття.' },
-              { time: '13:00', venue: 'PAVILLION 4', artist: 'dOP - Live', type: 'live', description: 'Культовий французький гурт повертається в Київ. Їхнє ніжне й глибоке кіно звучатиме в суботу — з усіма відбитками історії: благодійні виступи в Україні, колаборації з The Maneken, студійні сесії.' },
-              { time: '13:00', venue: 'GARDEN', artist: 'SEBA KORECKY - LIVE', type: 'live', description: 'Засновник дому «VERTUHA», продюсер і лідер гурту «XXX METALBAND» представлятиме нову концертну програму. 15-ть музикантів і музиканток на розширеній сцені Гардену — плани Києва на вечір суботи усім давно відомі.' },
-              { time: '13:30', venue: 'DEPO', artist: 'MICHELLE (UY) - LIVE', type: 'live', description: 'Найбільш самобутня уругвайська продюсерка гратиме новий лайв (виступ артистки на Ютубі The Mudd Show — хайлайт проекту у 2024 році).\n' },
-              { time: '13:30', venue: 'ANGAR', artist: 'OLES & ROMAN K', type: 'dj', description: 'Фінальний виступ суботи від засновника франківської формації DETALI і резидента Closer-у — український південь зустрічає захід привітно, дружньо і з сумкою для платівок на плечі.' },
-              { time: '14:00', venue: 'PAVILLION 4', artist: 'PYMIN - LIVE', type: 'live', description: 'Засновник лейблу Telesma та один з найтехнічніших музичних режисерів фестивалю. Його сет 2023 року на Брейві був один з найбільш технічно цікавих і складних, тож очікування від нових подорожей акустичними світами — захоплюючі та романтичні.\n' },
-              { time: '14:00', venue: 'GARDEN', artist: 'КОШИК МЕЛОДІЙ', type: 'dj', description: 'Максим Macka і його вінілове соул-крю гратимуть другий educational сет для фанатів «Вусатого фанку», української пісенної класики і команди артистів, котрі виступатимуть після них.' },
-              { time: '14:00', venue: 'AUDITORIUM', artist: 'ЕСКАПІСТІКО - INSHA DANCE COMPANY', type: 'performance', description: 'Саунд-артист Heinali разом з батьком Володимиром і хореографом Іллею Мірошніченком розширили можливості нової української сценічної мови — хореоакустики. Серпневий театральний хайлайт Києва — фінальний перформанс суботнього Аудіторіуму.\n' },
-              { time: '14:30', venue: 'DEPO', artist: 'TRIPPSY (LT)', type: 'dj', description: 'Литовський диджей і продюсер з українським серцем гратиме сольний сет з глибокої суміші трансу і техно. Повний творчий контроль Кароліса буде вечірнім маяком першого фестивального дня Brave Factory Festival 2025.' },
-              { time: '15:00', venue: 'BLACK BOX', artist: 'КНЯЗЬ ВОЛОДИМИР - LIVE', type: 'live', description: 'Фінальний виступ суботи — презентація нового реп-альбому Князя Володимира “Укр.мова”. Шість релізів за три роки, активна волонтерська діяльність і DJ IAN за деками — “присів, стрибок — це в один бік тобі квиток”.' },
-              { time: '15:00', venue: 'PAVILLION 4', artist: 'HUNGRY BOYS - LIVE', type: 'live', description: 'Київський дует закриє перший фестивальний день у павільйоні №4 темним дарк-диско й EBM. Резиденти Worn Pop і фанати синтвейву створять саундтрек нічної поїздки містом. Turn on the bright lights.' },
-              { time: '15:00', venue: 'GARDEN', artist: 'THE MANEKEN - LIVE', type: 'live', description: 'Фінальний суботній виступ фестивалю — ексклюзивна прем’єра альбому Євгена Філатова «NOVA ERA». 13 людей на сцені разом з вокалістом гурту dOP Nathan-ом Daisy — найкращу компанію для перегляду кіно вже знайдено.\n' }
+           '01.11': [
+               { time: '14:00', venue: 'ANGAR', artist: 'Roman K', type: 'dj', description: ''},
+               { time: '14:00', venue: 'BLACK BOX', artist: 'Serge Jazzmate', type: 'dj', description: ''},
+               { time: '16:00', venue: 'ANGAR', artist: 'The Against', type: 'live', description: ''},
+               { time: '16:30', venue: 'BLACK BOX', artist: 'Bedroom Talks', type: 'live', description: ''},
+               { time: '17:00', venue: 'ANGAR', artist: 'Motoblock', type: 'live', description: ''},
+               { time: '17:30', venue: 'BLACK BOX', artist: 'Primal Baby', type: 'live', description: '*'},
+               { time: '18:00', venue: 'ANGAR', artist: 'Kichi Kazuko', type: 'dj', description: ''},
+               { time: '18:30', venue: 'BLACK BOX', artist: 'Ship Her Son', type: 'live', description: ''},
+               { time: '19:30', venue: 'ANGAR', artist: 'Vril', type: 'live', description: '*'},
+               { time: '19:30', venue: 'BLACK BOX', artist: 'Lvcerate', type: 'live', description: ''},
+               { time: '20:30', venue: 'ANGAR', artist: 'Recid', type: 'dj', description: ''},
+               { time: '20:30', venue: 'BLACK BOX', artist: 'Kris Baha (AU)', type: 'live', description: '*'},
+               { time: '21:30', venue: 'BLACK BOX', artist: 'Hungry Boys', type: 'live', description: ''},
+
+
             ],
-            '24.08': [
-              { time: '11:00', venue: 'DEPO', artist: 'BAMBU', type: 'dj', description: 'Культовий резидент Closer-у відкриватиме Депо у неділю. Що підготує диджей цього разу — таємниця для усіх і для артиста самого.' },
-              { time: '11:00', venue: 'GARDEN', artist: 'SERENNE (CH)', type: 'dj', description: 'Giegling Showcase: Serenne\n' +
-                      'Минулорічний виступ резидентки швейцарського клубу «Supermarket» в Closer зібрав настільки багато уваги, що відкрити недільний Брейв власним гіпнотичним і чаруючим сетом було риторичним питанням.' },
-              { time: '14:00', venue: 'ANGAR', artist: 'BELLIS & KATIA STIEBER', type: 'dj', description: 'Недільне відкриття фестивалю у руках засновниць формації Hybrid Moment. Запуск однойменного лейблу, регулярні виступи на знакових українських майданчиках і нестандартний для вітчизняного слухача звук — Марго і Катерина знають, як створити той самий момент, що змінює все.' },
-              { time: '14:30', venue: 'DEPO', artist: 'RADIANT FUTUR - LIVE', type: 'live', description: 'Новий лайв Яна Єрьомєнко матиме ексклюзивну прем’єру на Брейві. Сольний реліз на Vortex і участь у компіляції Lirica Archives — від Брейву до Брейву студійна робота артиста є нескінченним знімальним днем.\n' },
-              { time: '14:30', venue: 'GARDEN', artist: 'COSMO (KR)', type: 'dj', description: 'Південно-корейська продюсерка доповнила глибокий музичний світ Giegling органічно, знайшовши там своє затишне місце, як і у Гардені в неділю.' },
-              { time: '15:00', venue: 'BLACK BOX', artist: 'TAQADDAM & BEY O BEY', type: 'dj', description: 'Співзасновник BRUKXT разом з іншим його резидентом і 1/3 формації “Terms of Groove” відкриватимуть двері чорного танцполу у неділю. Артем і Сашко дебютуватимуть на Брейві зі спільним вініловим кіно, тож заводьте будильник: we warned you!\n' },
-              { time: '15:00', venue: 'AUDITORIUM', artist: 'ВЕЧЕННЯ PEACHES (кінопоказ)', type: 'film', description: 'Вчення Peaches — реж. Філіпп Фуссенеґґер, Джуді Ландкаммер, 2024, 102‘\n' +
-                      'Неділя відкриватиме фестиваль стрічкою про творчий шлях панк-виконавиці Меррілл Ніскер. Боротьба з раком, патріархальними упередженнями і відстоювання власної сексуальної ідентичності — культова музикантка стала вчителем для тисяч авторок і лідеркою ЛГБТКІА+ спільноти.' },
-              { time: '15:30', venue: 'DEPO', artist: 'IGOR GLUSHKO', type: 'dj', description: 'Фестивальні сети резидента Closer-у і співзасновника Rhythm Büro — особлива подія для вибагливих слухачів. Підготовка до виступу йде паралельно з випуском двох нових релізів лейблу і першим сабатікалом у житті Ігоря — де взяти терпіння, щоб дочекатися наступної неділі?!' },
-              { time: '16:30', venue: 'PAVILLION 4', artist: 'SHERPA THE TIGER - LIVE', type: 'live', description: 'Львівський краут-рок-гурт творить кіношні саундтреки наживо та відкриватиме другий день фестивалю.' },
-              { time: '16:30', venue: 'ANGAR', artist: 'BINH (DE)', type: 'dj', description: 'Засновник лейблу Time Passages і резидент німецького Club Der Visionaere везе свій вініловий техно-блокбастер до Києва. Дюссельдорфський диджей, продюсер і багаторічний б2б партнер Ніколаса Лутца з сетом у Ангарі — найкращий подарунок до Дня Незалежності.' },
-              { time: '17:00', venue: 'BLACK BOX', artist: 'TYSK - LIVE', type: 'live', description: 'Харківсько-львівська грайм-машина їде до Києва з презентацією нового альбому. Команда шістьох друзів і творців центру нової культури Some People перед спарингом відмовляються від зважування: як ви, витримаєте такий тиск?' },
-              { time: '17:00', venue: 'GARDEN', artist: 'MAP.ACHE (DE) - LIVE', type: 'live', description: 'Німець везе лайв-програму, котру презентуватиме вперше саме на території кіностудії ім. О. Довженка. Wir freuen uns!\n' },
-              { time: '17:00', venue: 'AUDITORIUM', artist: 'BRYOZONE - LIVE', type: 'live', description: 'Презентація нових робіт Ганни Брижатої як глибоке експериментальне кіно: цікавість до одеських абстрактних форм раптова і неочікувана, як зустріч з прибульцями на даху.' },
-              { time: '17:30', venue: 'PAVILLION 4', artist: 'ZLYPNI - LIVE', type: 'live', description: 'Гурт з франківську, що знімає власне нуарне кіно: дарквейв і психоделічний рок — повна свобода у кадрі.\n' },
-              { time: '18:00', venue: 'BLACK BOX', artist: 'ALEX SAVAGE', type: 'dj', description: 'Резидент Closer-у і власник найрідкісніших лонгслівів у Києві гратиме на заході сонця в неділю. Як стати рок-іконою, граючи електро і брейкс — наш шеф-кухар посміхнеться і залишить цей рецепт у таємниці.\n' },
-              { time: '18:30', venue: 'DEPO', artist: 'MARKO SHUTTLE (IT)', type: 'dj', description: 'Закриваючий сет культового італійця по відчуттях має бути схожий на виграш улюбленим режисером «Оскару». Диджей, продюсер і власник лейблу «Eerie» знов їде до Києва з сумкою платівок і коханням до країни сміливих людей.' },
-              { time: '18:45', venue: 'PAVILLION 4', artist: 'SI PROCESS - LIVE', type: 'live', description: 'Музичні оповіді Стаса нагадують кіно про супергероїв: складні ритмічні малюнки й драматургія ударних перетворюють його на людину-драм-машину. Тримаємо ритм та чекаємо на виступ на другий день фестивалю.\n' },
-              { time: '19:00', venue: 'GARDEN', artist: 'EDUARDO DE LA CALLE (SP)', type: 'dj', description: 'Іспанець, котрий працював з DJ Hell, релізився на лейблі «Planet E Communications» у Карла Крейга і реміксував той самий трек Manuel-я Göttsching-а, гратиме закриття фестивалю. Якщо музичний грааль існує, варто шукати його саме тут.' },
-              { time: '19:00', venue: 'AUDITORIUM', artist: 'POLY CHAIN & SOPHIA BULGAKOVA Nemesis AV Live Premiere', type: 'performance', description: 'Poly Chain & Sophia Bulgakova: Nemesis AV — live premiere\n' +
-                      'Новий аудіо-візуальний перформанс «Nemesis» матиме ексклюзивну недільну прем’єру. Участь у фестивалях Dekmantel, Unsound, CTM і FIBER — українське мистецтво впевнено фарбує світ у національні кольори.' },
-              { time: '19:00', venue: 'ANGAR', artist: 'ARNAUD REBOTINI (FR) - LIVE', type: 'live', description: 'Вечірнє сонце йде за обрій, щоб залишити місце на небосхилі зірці електроклешу і засновнику гурту Black Strobe. Арно — культова фігура для французької і світової електронної музики, а також кіно: трек «I’m A Man» у фільмі «Rock’n’Rolla» Гая Річі і виграш премії César за саундтрек до іншого зробили артиста легендою з прижиттєвим статусом «un héritage culturel». Too good to miss!' },
-              { time: '19:30', venue: 'PAVILLION 4', artist: 'МІША ПРАВИЛЬНИЙ - LIVE', type: 'live', description: 'Ліричні монологи та бунтарські реп-маніфести: творчість Міші щира та народжуються на стику особистого досвіду за сценаріями, автором яких є саме життя.' },
-              { time: '20:00', venue: 'BLACK BOX', artist: 'DJ MELL G (DE)', type: 'dj', description: 'Фінальний виступ фестивалю у неділю від гамбурської диджейки — потенційна номінація “гран-прі”. Закохана у Київ і українців, Меліна Гаусманн святкуватиме День Незалежності у темряві танцполу “Black Box”. Впевнені, але запитаємо: ви готові побачити найкраще кіно у житті?' },
-              { time: '20:30', venue: 'AUDITORIUM', artist: 'MARIA & MAGDALYNA & PARKING SPOT "Танці На Краю Світу"', type: 'performance', description: 'Фінальним подарунком сцени до Дня Незалежності є театральна вистава акторок Надії Голубцової, Марусі Іонової і електронного музиканта Parking Spot про подорожі станами. Переосмислення творів українських письменників є почесною місією артистів, котра обрала їх сама.' },
-              { time: '20:30', venue: 'ANGAR', artist: 'SHULTS.SASHAA', type: 'dj', description: 'Фінальним кадром святкування Дня Незалежності є виступ резидента Closer- у і співзасновника Octan Recordstore. Закриваючий сет Сашка, народженого у серці козацької держави — Запоріжжі — завершить зйомки найкасовішого фільму серпня оплесками і криком «стоп, знято».' },
-              { time: '21:00', venue: 'PAVILLION 4', artist: 'HIDDEN ELEMENT - LIVE', type: 'live', description: 'Новий етап його звучання схожий на авторське кіно: без жанрових рамок і технічних сценаріїв, з повним прийняттям себе й музикою, що лунає наживо.' }
+            '02.11': [
+                { time: '14:00', venue: 'ANGAR', artist: 'Katja Stieber & Gothivka', type: 'dj', description: ''},
+                { time: '14:00', venue: 'BLACK BOX', artist: 'Shults.Sashaa', type: 'dj', description: ''},
+                { time: '16:30', venue: 'ANGAR', artist: 'Rare DM (US)', type: 'live', description: '*'},
+                { time: '16:30', venue: 'BLACK BOX', artist: 'Raavel', type: 'dj', description: ''},
+                { time: '17:30', venue: 'ANGAR', artist: 'Maria & Magdalina & Bunht', type: 'live', description: ''},
+                { time: '18:30', venue: 'ANGAR', artist: 'Kurs Valut', type: 'live', description: ''},
+                { time: '18:30', venue: 'BLACK BOX', artist: 'Jensen Interceptor', type: 'live', description: '*'},
+                { time: '19:30', venue: 'ANGAR', artist: 'Bellis', type: 'dj', description: ''},
+                { time: '19:30', venue: 'BLACK BOX', artist: 'Umwelt (FR)', type: 'live', description: '*'},
+                { time: '20:30', venue: 'BLACK BOX', artist: 'Alex Savage', type: 'dj', description: ''},
+                { time: '21:00', venue: 'ANGAR', artist: ' Parrish Smith (NL)', type: 'live', description: '*'},
+
+
             ]
           };
 
-          const venues = ['ALL', 'BLACK BOX', 'DEPO', 'PAVILLION 4', 'GARDEN', 'AUDITORIUM', 'ANGAR'];
+          const venues = ['ALL', 'BLACK BOX', 'ANGAR'];
 
         // Get current events for the selected day
           const allEventsForDay = festivalData[selectedDay] || [];
@@ -501,12 +473,12 @@ body.dark-mode .dark-mode-text {
                         React.createElement('span', null, currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }))
                       ),
                       React.createElement('div', { className: 'flex bg-gray-800/50 rounded-lg p-1' },
-                        ['22.08', '24.08'].map(day =>
+                        ['23.08', '24.08'].map(day =>
                           React.createElement('button', {
                             key: day,
                             onClick: () => setSelectedDay(day),
                             className: `px-2 md:px-4 py-1 md:py-2 rounded text-sm transition-all ${selectedDay === day ? 'bg-purple-600 text-white' : 'text-gray-300 hover:text-white'}`
-                          }, day === '22.08' ? 'СБ 22' : 'НД 24')
+                          }, day === '23.08' ? 'СБ 23' : 'НД 24')
                         )
                       )
                     )
