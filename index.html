@@ -46,8 +46,8 @@ body.dark-mode .dark-mode-text {
 }
 
     @font-face {
-        font-family: 'MyCustomFont';
-        src: url('./UnitySans-Basic.ttf') format('truetype');
+        font-family: 'a_LCDNova';
+        src: url('./a_LCDNova.ttf') format('truetype');
     }
     .live-box-bg {
         position: relative;
@@ -246,7 +246,7 @@ body.dark-mode .dark-mode-text {
         const FestivalSchedule = () => {
           const [currentTime, setCurrentTime] = useState(new Date());
           const [selectedVenue, setSelectedVenue] = useState('ALL');
-          const [selectedDay, setSelectedDay] = useState('23.08');
+          const [selectedDay, setSelectedDay] = useState('01.11');
           const [selectedArtist, setSelectedArtist] = useState(null);
           const [selectedSlot, setSelectedSlot] = useState(null);
           const [showPastPerformances, setShowPastPerformances] = useState(true);
@@ -344,7 +344,7 @@ body.dark-mode .dark-mode-text {
               if (nextEvent) {
                 return `${event.time}-${nextEvent.time}`;
               } else {
-                // Last event, assume up to 4 hours, clamp at 23:00
+                // Last event, assume up to 4 hours, clamp at 22:00
                 const [hours, minutes] = event.time.split(':');
                 const startHour = parseInt(hours, 10);
                 const startMinute = parseInt(minutes, 10);
@@ -352,9 +352,9 @@ body.dark-mode .dark-mode-text {
                 let endHour = startHour + 4;
                 let endMinute = startMinute;
 
-                if (endHour > 23 || (endHour === 23 && endMinute > 0)) {
-                  endHour = 23;
-                  endMinute = 0; // clamp to 23:00 sharp
+                if (endHour > 22 || (endHour === 22 && endMinute > 0)) {
+                  endHour = 22;
+                  endMinute = 0; // clamp to 22:00 sharp
                 }
 
                 const formattedEnd = `${endHour.toString().padStart(2, '0')}:${endMinute.toString().padStart(2, '0')}`;
@@ -366,7 +366,7 @@ body.dark-mode .dark-mode-text {
           const getPerformanceStatus = (event, allEvents, selectedDay) => {
               const now = currentTime;
 
-              // Parse selectedDay like '23.08' -> day/month
+              // Parse selectedDay like '01.11' -> day/month
               const [day, month] = selectedDay.split('.').map(Number);
               const [hours, minutes] = event.time.split(':');
 
@@ -400,7 +400,7 @@ body.dark-mode .dark-mode-text {
                   return 'future';
                 }
               } else {
-  // Last event, assume up to 4 hours, clamp at 23:00
+  // Last event, assume up to 4 hours, clamp at 22:00
   const [hours, minutes] = event.time.split(':');
   const startHour = parseInt(hours, 10);
   const startMinute = parseInt(minutes, 10);
@@ -408,9 +408,9 @@ body.dark-mode .dark-mode-text {
   let endHour = startHour + 4;
   let endMinute = startMinute;
 
-  if (endHour > 23 || (endHour === 23 && endMinute > 0)) {
-    endHour = 23;
-    endMinute = 0; // clamp to 23:00 sharp
+  if (endHour > 22 || (endHour === 22 && endMinute > 0)) {
+    endHour = 22;
+    endMinute = 0; // clamp to 22:00 sharp
   }
 
   const endTime = new Date();
@@ -473,12 +473,12 @@ body.dark-mode .dark-mode-text {
                         React.createElement('span', null, currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }))
                       ),
                       React.createElement('div', { className: 'flex bg-gray-800/50 rounded-lg p-1' },
-                        ['23.08', '24.08'].map(day =>
+                        ['01.11', '02.11'].map(day =>
                           React.createElement('button', {
                             key: day,
                             onClick: () => setSelectedDay(day),
                             className: `px-2 md:px-4 py-1 md:py-2 rounded text-sm transition-all ${selectedDay === day ? 'bg-purple-600 text-white' : 'text-gray-300 hover:text-white'}`
-                          }, day === '23.08' ? 'СБ 23' : 'НД 24')
+                          }, day === '01.11' ? 'СБ 01' : 'НД 02')
                         )
                       )
                     )
