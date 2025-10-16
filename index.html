@@ -15,7 +15,7 @@
         background-size: cover !important;
         background-position: center top !important;
         overflow-x: hidden;
-        background-image: none !important; /* Remove the original background on mobile */
+        background-image: none !important;
     }
 
     .all-view {
@@ -24,7 +24,6 @@
         background-position: center top !important;
     }
 
-    /* Create one fixed background for the entire page */
     body::before {
         content: '';
         position: fixed;
@@ -32,7 +31,7 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-image: url('https://static-image-2.s3.us-west-1.amazonaws.com/blog_images/photo_2025-08-21_21-47-57.jpg');
+        background-image: url('https://static-image-2.s3.us-west-1.amazonaws.com/blog_images/pic4.png');
         background-size: cover;
         background-position: center top;
         background-repeat: no-repeat;
@@ -42,10 +41,10 @@
 }
 
 body.dark-mode .dark-mode-text {
-    color: #6b7280 !important; /* dark grey */
+    color: #6b7280 !important;
 }
 
-    @font-face {
+@font-face {
     font-family: 'LCDNova';
     src: url('./a_LCDNova.ttf') format('truetype');
     font-weight: normal;
@@ -53,192 +52,146 @@ body.dark-mode .dark-mode-text {
     font-display: swap;
 }
 
-    .live-box-bg {
-        position: relative;
-        overflow: hidden;
+.lcd-font {
+    font-family: 'LCDNova', monospace !important;
+    letter-spacing: 0.05em;
+}
+
+.live-box-bg {
+    background: linear-gradient(to right, rgba(252, 0, 255, 0.2), rgba(0, 255, 255, 0.2));  /* Magenta to Cyan */
+    border-color: #fc00ff;  /* Magenta border */
+
+    position: relative;
+    overflow: hidden;
+}
+
+.live-box-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.15) 0px,
+        rgba(255, 255, 255, 0.15) 50px,
+        transparent 50px,
+        transparent 120px
+    );
+    animation: slideRightLeft 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.live-box-bg > * {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes slideRightLeft {
+    0%, 100% {
+        transform: translateX(-30px);
     }
-
-    .live-box-bg::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background-image: repeating-linear-gradient(
-            -45deg,
-            rgba(255, 255, 255, 0.15) 0px,
-            rgba(255, 255, 255, 0.15) 50px,
-            transparent 50px,
-            transparent 120px
-        );
-        animation: slideRightLeft 8s ease-in-out infinite;
-        z-index: 1;
+    50% {
+        transform: translateX(30px);
     }
+}
 
-    .live-box-bg > * {
-        position: relative;
-        z-index: 2;
-    }
+.artist-box-blackbox {
+    background-color: rgba(252, 0, 255, 0.3) !important;  /* Magenta */
+    backdrop-filter: blur(40px);
+}
 
-    @keyframes slideRightLeft {
-        0%, 100% {
-            transform: translateX(-30px);
-        }
-        50% {
-            transform: translateX(30px);
-        }
-    }
+.artist-box-angar {
+    background-color: rgba(0, 255, 255, 0.3) !important;  /* Cyan */
+    backdrop-filter: blur(40px);
+}
 
-    @keyframes slideToRight {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(170px);
-        }
-    }
+.artist-box-past {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(40px);
+    border-left-color: #6b7280 !important;
+}
 
-    @keyframes slideToRight {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(100px);
-        }
-    }
+.artist-modal {
+    backdrop-filter: blur(21px) !important;
+    background-color: rgba(17, 24, 39, 0.6) !important;
+}
 
-    @keyframes shimmer {
-        0% { left: -100%; }
-        100% { left: 100%; }
-    }
+body {
+    margin: 0;
+    font-family: 'LCDNova', monospace, system-ui, -apple-system, sans-serif;
+    font-weight: 800;
+    background-image: url('https://static-image-2.s3.us-west-1.amazonaws.com/blog_images/pic4.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 
-    .artist-box-live {
-        background-color: rgba(139, 92, 246, 0.3) !important;
-        backdrop-filter: blur(40px);
-        border-left-color: #8b5cf6 !important;
-/*text-shadow: 0 0 3px #c4b5fd, 0 0 6px #c4b5fd !important;*/
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
 
-    }
+body.dark-mode::after {
+    opacity: 1;
+}
 
-    .artist-box-dj {
-        background-color: rgba(59, 130, 246, 0.3) !important;
-        backdrop-filter: blur(40px);
-        border-left-color: #3b82f6 !important;
-/*text-shadow: 0 0 3px #93c5fd, 0 0 6px #93c5fd !important;*/
-
-    }
-
-    .artist-box-film {
-        background-color: rgba(239, 68, 68, 0.3) !important;
-        backdrop-filter: blur(40px);
-        border-left-color: #ef4444 !important;
-/*text-shadow: 0 0 3px #fca5a5, 0 0 6px #fca5a5 !important;*/
-
-    }
-
-    .artist-box-performance {
-        background-color: rgba(34, 197, 94, 0.3) !important;
-        backdrop-filter: blur(40px);
-        border-left-color: #22c55e !important;
-/*text-shadow: 0 0 3px #86efac, 0 0 6px #86efac !important;*/
-
-    }
-
-    .artist-box-past {
-        background-color: rgba(0, 0, 0, 0.4) !important;
-        backdrop-filter: blur(40px);
-        border-left-color: #6b7280 !important;
-/*text-shadow: 0 0 3px #d1d5db, 0 0 6px #d1d5db !important;*/
-
-    }
-
-    .artist-modal {
-        backdrop-filter: blur(21px) !important;
-        background-color: rgba(17, 24, 39, 0.6) !important;
-    }
-       body {
-        margin: 0;
-        font-family: 'LCDNova', system-ui, -apple-system, sans-serif;
-        background-image: url('https://static-image-2.s3.us-west-1.amazonaws.com/blog_images/photo_2025-08-21_21-47-57.jpg');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-    }
-
-    /* Dark filter overlay ONLY for background image */
+@media (max-width: 768px) {
     body::after {
-        content: '';
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: -2;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        pointer-events: none;
+        z-index: -1;
     }
 
     body.dark-mode::after {
         opacity: 1;
     }
 
-    /* Mobile dark filter - only affects background */
-    @media (max-width: 768px) {
-        body::after {
-            position: fixed;
-            z-index: -1;
-        }
-
-        body.dark-mode::after {
-            opacity: 1;
-        }
-
-        /* Ensure mobile background pseudo-element stays below filter */
-        body::before {
-            z-index: -2;
-        }
+    body::before {
+        z-index: -2;
     }
+}
 
+.all-view {
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
 
-    .all-view {
-        background-size: cover;
-        background-position: center top;
-        background-attachment: fixed;
-    }
+.dark-mode-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-        /* Dark mode overlay */
-    .dark-mode-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: -1;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
+.dark-mode-overlay.active {
+    opacity: 1;
+}
 
-    .dark-mode-overlay.active {
-        opacity: 1;
-    }
+body.dark-mode .text-gray-800 {
+    color: black !important;
+}
 
-    /* Make past performance legend black in dark mode */
-        body.dark-mode .text-gray-800 {
-            color: black !important;
-        }
-
-        body.dark-mode .bg-gray-800 {
-            background-color: black !important;
-        }
-
-
-
+body.dark-mode .bg-gray-800 {
+    background-color: black !important;
+}
     </style>
 </head>
 <body>
@@ -256,16 +209,14 @@ body.dark-mode .dark-mode-text {
           const [showPastPerformances, setShowPastPerformances] = useState(true);
           const [isDarkMode, setIsDarkMode] = useState(true);
 
+          // useEffect(() => {
+          //     document.body.classList.add('dark-mode');
+          // }, []);
 
-            useEffect(() => {
-              document.body.classList.add('dark-mode');
-            }, []);
-          // Reset slot when day changes
           useEffect(() => {
               setSelectedSlot(null);
-              }, [selectedDay]);
+          }, [selectedDay]);
 
-          // Update current time every minute
           useEffect(() => {
             const timer = setInterval(() => {
               setCurrentTime(new Date());
@@ -288,8 +239,6 @@ body.dark-mode .dark-mode-text {
                { time: '20:30', venue: 'ANGAR', artist: 'Recid', type: 'dj', description: ''},
                { time: '20:30', venue: 'BLACK BOX', artist: 'Kris Baha (AU)', type: 'live', description: '*'},
                { time: '21:30', venue: 'BLACK BOX', artist: 'Hungry Boys', type: 'live', description: ''},
-
-
             ],
             '02.11': [
                 { time: '14:00', venue: 'ANGAR', artist: 'Katja Stieber & Gothivka', type: 'dj', description: ''},
@@ -303,34 +252,48 @@ body.dark-mode .dark-mode-text {
                 { time: '19:30', venue: 'BLACK BOX', artist: 'Umwelt (FR)', type: 'live', description: '*'},
                 { time: '20:30', venue: 'BLACK BOX', artist: 'Alex Savage', type: 'dj', description: ''},
                 { time: '21:00', venue: 'ANGAR', artist: ' Parrish Smith (NL)', type: 'live', description: '*'},
-
-
             ]
           };
 
           const venues = ['ALL', 'BLACK BOX', 'ANGAR'];
 
-        // Get current events for the selected day
           const allEventsForDay = festivalData[selectedDay] || [];
 
-          const getTypeIcon = (type) => {
-            const iconStyle = "w-4 h-4";
-            switch (type) {
-              case 'live': return React.createElement('svg', { className: iconStyle + ' text-purple-500', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z' }));
-              case 'dj': return React.createElement('svg', { className: iconStyle + ' text-blue-500', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M16 4c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8m0-2C9.37 2 4 7.37 4 14s5.37 12 12 12 12-5.37 12-12S22.63 2 16 2z' }));
-              default: return null;
+const getTypeIcon = (type, venue) => {
+  const iconColor = venue === 'BLACK BOX' ? '#fc00ff' : '#00ffff';
+  const iconStyle = "w-4 h-4";
+
+  switch (type) {
+    case 'live':
+      return React.createElement('svg', {
+        className: iconStyle,
+        fill: 'currentColor',
+        viewBox: '0 0 24 24',
+        style: { color: iconColor }
+      }, React.createElement('path', { d: 'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z' }));
+
+    case 'dj':
+      return React.createElement('svg', {
+        className: iconStyle,
+        fill: 'currentColor',
+        viewBox: '0 0 24 24',
+        style: { color: iconColor }
+      }, React.createElement('path', { d: 'M16 4c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8m0-2C9.37 2 4 7.37 4 14s5.37 12 12 12 12-5.37 12-12S22.63 2 16 2z' }));
+
+    default:
+      return null;
+  }
+};
+
+          const getVenueColor = (venue) => {
+            switch (venue) {
+                case 'BLACK BOX': return 'border-l-[#fc00ff]';  /* Magenta */
+                case 'ANGAR': return 'border-l-[#00ffff]';  /* Cyan */
+                default: return 'border-l-gray-500';
             }
           };
 
-          const getTypeColor = (type) => {
-            switch (type) {
-              case 'live': return 'border-l-purple-500 bg-purple-50';
-              case 'dj': return 'border-l-blue-500 bg-blue-50';
-              default: return 'border-l-gray-300 bg-gray-50';
-            }
-          };
-
-            const getPerformanceTimeSlot = (event, allEvents) => {
+          const getPerformanceTimeSlot = (event, allEvents) => {
               const sameVenueEvents = allEvents
                 .filter(e => e.venue === event.venue)
                 .sort((a, b) => a.time.localeCompare(b.time));
@@ -344,7 +307,6 @@ body.dark-mode .dark-mode-text {
               if (nextEvent) {
                 return `${event.time}-${nextEvent.time}`;
               } else {
-                // Last event, assume up to 4 hours, clamp at 22:00
                 const [hours, minutes] = event.time.split(':');
                 const startHour = parseInt(hours, 10);
                 const startMinute = parseInt(minutes, 10);
@@ -354,28 +316,23 @@ body.dark-mode .dark-mode-text {
 
                 if (endHour > 22 || (endHour === 22 && endMinute > 0)) {
                   endHour = 22;
-                  endMinute = 0; // clamp to 22:00 sharp
+                  endMinute = 0;
                 }
 
                 const formattedEnd = `${endHour.toString().padStart(2, '0')}:${endMinute.toString().padStart(2, '0')}`;
                 return `${event.time}-${formattedEnd}`;
               }
-            };
-
+          };
 
           const getPerformanceStatus = (event, allEvents, selectedDay) => {
               const now = currentTime;
-
-              // Parse selectedDay like '01.11' -> day/month
               const [day, month] = selectedDay.split('.').map(Number);
               const [hours, minutes] = event.time.split(':');
 
-              // Event datetime
               const eventDate = new Date();
               eventDate.setFullYear(now.getFullYear(), month - 1, day);
               eventDate.setHours(parseInt(hours), parseInt(minutes), 0, 0);
 
-              // Find next event on the same stage
               const sameVenueEvents = allEvents
                 .filter(e => e.venue === event.venue)
                 .sort((a, b) => a.time.localeCompare(b.time));
@@ -400,75 +357,58 @@ body.dark-mode .dark-mode-text {
                   return 'future';
                 }
               } else {
-  // Last event, assume up to 4 hours, clamp at 22:00
-  const [hours, minutes] = event.time.split(':');
-  const startHour = parseInt(hours, 10);
-  const startMinute = parseInt(minutes, 10);
+                const [hours, minutes] = event.time.split(':');
+                const startHour = parseInt(hours, 10);
+                const startMinute = parseInt(minutes, 10);
 
-  let endHour = startHour + 4;
-  let endMinute = startMinute;
+                let endHour = startHour + 4;
+                let endMinute = startMinute;
 
-  if (endHour > 22 || (endHour === 22 && endMinute > 0)) {
-    endHour = 22;
-    endMinute = 0; // clamp to 22:00 sharp
-  }
+                if (endHour > 22 || (endHour === 22 && endMinute > 0)) {
+                  endHour = 22;
+                  endMinute = 0;
+                }
 
-  const endTime = new Date();
-  endTime.setFullYear(now.getFullYear(), month - 1, day);
-  endTime.setHours(endHour, endMinute, 0, 0);
+                const endTime = new Date();
+                endTime.setFullYear(now.getFullYear(), month - 1, day);
+                endTime.setHours(endHour, endMinute, 0, 0);
 
-  if (now >= eventDate && now < endTime) {
-    return 'current';
-  } else if (now >= endTime) {
-    return 'past';
-  } else {
-    return 'future';
-  }
-}
-            };
-
-
-          const getStatusColor = (status, type) => {
-            const baseColor = getTypeColor(type);
-
-            switch (status) {
-              case 'current':
-                return baseColor.replace('bg-purple-50', 'bg-green-100').replace('bg-blue-50', 'bg-green-100').replace('bg-red-50', 'bg-green-100').replace('bg-green-50', 'bg-green-100') + ' ring-2 ring-green-400';
-              case 'past':
-                return 'border-l-gray-500 bg-gray-200 opacity-60';
-              default:
-                return baseColor;
-            }
+                if (now >= eventDate && now < endTime) {
+                  return 'current';
+                } else if (now >= endTime) {
+                  return 'past';
+                } else {
+                  return 'future';
+                }
+              }
           };
 
+          const filteredEvents = (festivalData[selectedDay] || [])
+            .filter(event => selectedVenue === 'ALL' || event.venue === selectedVenue)
+            .filter(event => {
+              if (!showPastPerformances) {
+                const status = getPerformanceStatus(event, festivalData[selectedDay], selectedDay);
+                return status !== 'past';
+              }
+              return true;
+            });
 
-            const filteredEvents = (festivalData[selectedDay] || [])
-              .filter(event => selectedVenue === 'ALL' || event.venue === selectedVenue)
-              .filter(event => {
-                if (!showPastPerformances) {
-                  const status = getPerformanceStatus(event, festivalData[selectedDay], selectedDay);
-                  return status !== 'past';
-                }
-                return true;
-              });
+          const groupedEvents = filteredEvents.reduce((acc, event) => {
+            if (!acc[event.time]) acc[event.time] = [];
+            acc[event.time].push(event);
+            return acc;
+          }, {});
 
-            const groupedEvents = filteredEvents.reduce((acc, event) => {
-              if (!acc[event.time]) acc[event.time] = [];
-              acc[event.time].push(event);
-              return acc;
-            }, {});
-
-            const timeSlots = Object.keys(groupedEvents).sort().filter(time => groupedEvents[time].length > 0);
-
+          const timeSlots = Object.keys(groupedEvents).sort().filter(time => groupedEvents[time].length > 0);
 
         return React.createElement('div', { className: 'min-h-screen text-white all-view' },
-            React.createElement('div', { className: 'bg-black/50 backdrop-blur-sm border-b border-purple-500/30 sticky top-0 z-10' },
+            React.createElement('div', { className: 'bg-black/50 backdrop-blur-sm border-b border-[#fc00ff]/30 sticky top-0 z-10'},
               React.createElement('div', { className: 'max-w-6xl mx-auto p-2 md:p-4' },
                 React.createElement('div', { className: 'flex flex-col gap-2' },
                   React.createElement('div', { className: 'flex justify-between items-center' },
-                    React.createElement('h1', { className: 'text-xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent' }, 'BRAVE FACTORY'),
+                    React.createElement('h1', { className: 'text-xl md:text-3xl font-bold bg-gradient-to-r from-[#fc00ff] to-[#00ffff] bg-clip-text text-transparent'}, 'BLACK FACTORY'),
                     React.createElement('div', { className: 'flex items-center gap-2' },
-                      React.createElement('div', { className: 'hidden md:flex items-center gap-2 text-purple-300 text-sm' },
+                      React.createElement('div', { className: 'hidden md:flex items-center gap-2 text-[#fe80ff] text-sm' },
                         React.createElement('svg', { className: 'w-4 h-4', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z' })),
                         React.createElement('span', null, currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }))
                       ),
@@ -477,14 +417,13 @@ body.dark-mode .dark-mode-text {
                           React.createElement('button', {
                             key: day,
                             onClick: () => setSelectedDay(day),
-                            className: `px-2 md:px-4 py-1 md:py-2 rounded text-sm transition-all ${selectedDay === day ? 'bg-purple-600 text-white' : 'text-gray-300 hover:text-white'}`
+                            className: `px-2 md:px-4 py-1 md:py-2 rounded text-sm transition-all ${selectedDay === day ? 'bg-[#fc00ff] text-white' : 'text-gray-300 hover:text-white'}`
                           }, day === '01.11' ? 'СБ 01' : 'НД 02')
                         )
                       )
                     )
                   ),
                   React.createElement('div', { className: 'flex flex-wrap items-center justify-between gap-2' },
-                      // Left: Venues
                       React.createElement('div', { className: 'flex flex-wrap gap-1 md:gap-2' },
                         venues.map(venue =>
                           React.createElement('button', {
@@ -492,46 +431,45 @@ body.dark-mode .dark-mode-text {
                             onClick: () => setSelectedVenue(venue),
                             className: `px-2 md:px-3 py-1 rounded-full text-xs md:text-sm transition-all ${
                               selectedVenue === venue
-                                ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25'
+                                ? 'bg-[#fc00ff] text-white shadow-lg shadow-[#fc00ff]/25'
                                 : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 hover:text-white border border-gray-600'
                             }`
-                          }, venue === 'PAVILLION 4' ? 'PAVILLION 4' : venue)
+                          }, venue)
                         )
                       ),
-                        // Right: Show/Hide button
-                        React.createElement('button', {
-                          onClick: () => setShowPastPerformances(!showPastPerformances),
-                          className: `flex items-center gap-2 px-3 py-1 rounded-full text-xs transition-all ${
-                            showPastPerformances
-                              ? 'bg-pink-700 text-white'   // ON: dark pink
-                              : 'bg-pink-900 text-pink-300' // OFF: even darker pink
-                          } hover:bg-pink-600`
-                        },
-                          React.createElement('span', null, showPastPerformances ? 'Hide Past' : 'Show Past'),
-                          React.createElement('svg', { className: 'w-3 h-3', fill: 'currentColor', viewBox: '0 0 24 24' },
-                            showPastPerformances
-                              ? React.createElement('path', { d: 'M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z' })
-                              : React.createElement('path', { d: 'M11.83,9L15,12.16C15,12.11 15,12.05 15,12A3,3 0 0,0 12,9C11.94,9 11.89,9 11.83,9M7.53,9.8L9.08,11.35C9.03,11.56 9,11.77 9,12A3,3 0 0,0 12,15C12.22,15 12.44,14.97 12.65,14.92L14.2,16.47C13.53,16.8 12.79,17 12,17A5,5 0 0,1 7,12C7,11.21 7.2,10.47 7.53,9.8M2,4.27L4.28,6.55L4.73,7C3.08,8.3 1.78,10 1,12C2.73,16.39 7,19.5 12,19.5C13.55,19.5 15.03,19.2 16.38,18.66L16.81,19.09L19.73,22L21,20.73L3.27,3M12,7A5,5 0 0,1 17,12C17,12.64 16.87,13.26 16.64,13.82L19.57,16.75C21.07,15.5 22.27,13.86 23,12C21.27,7.61 17,4.5 12,4.5C10.6,4.5 9.26,4.75 8,5.2L10.17,7.35C10.76,7.13 11.37,7 12,7Z' })
-                          )
-
-                        ),
                       React.createElement('button', {
-onClick: () => {
-  setIsDarkMode(!isDarkMode);
-  document.body.classList.toggle('dark-mode', !isDarkMode);
-},                          className: `flex items-center gap-2 px-3 py-1 rounded-full text-xs transition-all ${
-                            isDarkMode
-                              ? 'bg-gray-800 text-white'
-                              : 'bg-gray-600 text-gray-300'
-                          } hover:bg-gray-700`
-                        },
-                          React.createElement('svg', { className: 'w-3 h-3', fill: 'currentColor', viewBox: '0 0 24 24' },
-                            isDarkMode
-                              ? React.createElement('path', { d: 'M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z' })
-                              : React.createElement('path', { d: 'M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.4 6.35,17.41C9.37,20.43 14,20.54 17.33,17.97Z' })
-                          ),
-                          React.createElement('span', null, isDarkMode ? 'Light' : 'Dark')
-                        ),
+                        onClick: () => setShowPastPerformances(!showPastPerformances),
+                        className: `flex items-center gap-2 px-3 py-1 rounded-full text-xs transition-all ${
+                          showPastPerformances
+                            ? 'bg-pink-700 text-white'
+                            : 'bg-pink-900 text-pink-300'
+                        } hover:bg-pink-600`
+                      },
+                        React.createElement('span', null, showPastPerformances ? 'Hide Past' : 'Show Past'),
+                        React.createElement('svg', { className: 'w-3 h-3', fill: 'currentColor', viewBox: '0 0 24 24' },
+                          showPastPerformances
+                            ? React.createElement('path', { d: 'M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z' })
+                            : React.createElement('path', { d: 'M11.83,9L15,12.16C15,12.11 15,12.05 15,12A3,3 0 0,0 12,9C11.94,9 11.89,9 11.83,9M7.53,9.8L9.08,11.35C9.03,11.56 9,11.77 9,12A3,3 0 0,0 12,15C12.22,15 12.44,14.97 12.65,14.92L14.2,16.47C13.53,16.8 12.79,17 12,17A5,5 0 0,1 7,12C7,11.21 7.2,10.47 7.53,9.8M2,4.27L4.28,6.55L4.73,7C3.08,8.3 1.78,10 1,12C2.73,16.39 7,19.5 12,19.5C13.55,19.5 15.03,19.2 16.38,18.66L16.81,19.09L19.73,22L21,20.73L3.27,3M12,7A5,5 0 0,1 17,12C17,12.64 16.87,13.26 16.64,13.82L19.57,16.75C21.07,15.5 22.27,13.86 23,12C21.27,7.61 17,4.5 12,4.5C10.6,4.5 9.26,4.75 8,5.2L10.17,7.35C10.76,7.13 11.37,7 12,7Z' })
+                        )
+                      ),
+                      // React.createElement('button', {
+                      //   onClick: () => {
+                      //     setIsDarkMode(!isDarkMode);
+                      //     document.body.classList.toggle('dark-mode', !isDarkMode);
+                      //   },
+                      //   className: `flex items-center gap-2 px-3 py-1 rounded-full text-xs transition-all ${
+                      //     isDarkMode
+                      //       ? 'bg-gray-800 text-white'
+                      //       : 'bg-gray-600 text-gray-300'
+                      //   } hover:bg-gray-700`
+                      // },
+                      //   React.createElement('svg', { className: 'w-3 h-3', fill: 'currentColor', viewBox: '0 0 24 24' },
+                      //     isDarkMode
+                      //       ? React.createElement('path', { d: 'M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z' })
+                      //       : React.createElement('path', { d: 'M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.4 6.35,17.41C9.37,20.43 14,20.54 17.33,17.97Z' })
+                      //   ),
+                      //   React.createElement('span', null, isDarkMode ? 'Light' : 'Dark')
+                      // )
                     )
                 )
               )
@@ -540,37 +478,51 @@ onClick: () => {
             React.createElement('div', { className: 'max-w-6xl mx-auto p-4' },
               React.createElement('div', { className: 'flex flex-wrap gap-3 md:gap-4 mb-4 md:mb-6 text-xs md:text-sm' },
                 React.createElement('div', { className: 'flex items-center gap-2' },
-                  React.createElement('svg', { className: 'w-3 h-3 md:w-4 md:h-4 text-purple-400', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z' })),
-React.createElement('span', { className: 'dark-mode-text' }, 'Live Performance')                ),
-                React.createElement('div', { className: 'flex items-center gap-2' },
-                  React.createElement('svg', { className: 'w-3 h-3 md:w-4 md:h-4 text-blue-400', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M16 4c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8m0-2C9.37 2 4 7.37 4 14s5.37 12 12 12 12-5.37 12-12S22.63 2 16 2z' })),
-                  React.createElement('span', { className: 'dark-mode-text' }, 'DJ Set')
+            // BLACK BOX legend
+            React.createElement('div', { className: 'w-3 h-3 md:w-4 md:h-4 rounded', style: {backgroundColor: '#fc00ff'} }),
+                              React.createElement('span', { className: 'text-light-gray-400' }, 'BLACK BOX')
+                            ),
+                            React.createElement('div', { className: 'flex items-center gap-2' },
+            // ANGAR legend
+            React.createElement('div', { className: 'w-3 h-3 md:w-4 md:h-4 rounded', style: {backgroundColor: '#00ffff'} }),
+                  React.createElement('span', { className: 'text-light-gray-400' }, 'ANGAR')
                 ),
+                // Live Performance icon
                 React.createElement('div', { className: 'flex items-center gap-2' },
-                  React.createElement('svg', { className: 'w-3 h-3 md:w-4 md:h-4 text-red-400', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z' })),
-                  React.createElement('span', { className: 'dark-mode-text' }, 'Film Screening')
+                  React.createElement('svg', {
+                    className: 'w-3 h-3 md:w-4 md:h-4',
+                    fill: 'currentColor',
+                    viewBox: '0 0 24 24',
+                    style: { color: '#fc00ff' }  // Magenta
+                  }, React.createElement('path', { d: 'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z' })),
+                  React.createElement('span', { className: 'text-light-gray-400' }, 'Live Performance')
                 ),
+                // DJ Set icon
                 React.createElement('div', { className: 'flex items-center gap-2' },
-                  React.createElement('svg', { className: 'w-3 h-3 md:w-4 md:h-4 text-green-400', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M16 4c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8m0-2C9.37 2 4 7.37 4 14s5.37 12 12 12 12-5.37 12-12S22.63 2 16 2z' })),
-                  React.createElement('span', { className: 'dark-mode-text' }, 'Performance Art')
+                  React.createElement('svg', {
+                    className: 'w-3 h-3 md:w-4 md:h-4',
+                    fill: 'currentColor',
+                    viewBox: '0 0 24 24',
+                    style: { color: '#00ffff' }  // Cyan
+                  }, React.createElement('path', { d: 'M16 4c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8m0-2C9.37 2 4 7.37 4 14s5.37 12 12 12 12-5.37 12-12S22.63 2 16 2z' })),
+                  React.createElement('span', { className: 'text-light-gray-400' }, 'DJ Set')
                 ),
                 React.createElement('div', { className: 'flex items-center gap-2 text-gray-500' },
-                React.createElement('div', { className: 'w-3 h-3 md:w-4 md:h-4 bg-gray-800 rounded opacity-60' }),
-                React.createElement('span', { className: 'text-gray-800 font-bold' }, 'Past Performance')
-                )
+  React.createElement('div', { className: 'w-3 h-3 md:w-4 md:h-4 bg-gray-800 rounded opacity-60' }),
+  React.createElement('span', { className: 'text-gray-400 font-bold' }, 'Past Performance')
+)
               )
             ),
+
             React.createElement('div', { className: 'max-w-6xl mx-auto p-4' },
               React.createElement('div', { className: 'space-y-6' },
                 (() => {
-                  // First, extract all current events
                   const allCurrentEvents = timeSlots.flatMap(time =>
                     groupedEvents[time].filter(event =>
                       getPerformanceStatus(event, festivalData[selectedDay], selectedDay) === 'current'
                     )
                   );
 
-                  // Filter out time slots that only have current events
                   const nonCurrentTimeSlots = timeSlots.filter(time => {
                     const events = groupedEvents[time];
                     return !events.every(event =>
@@ -580,18 +532,17 @@ React.createElement('span', { className: 'dark-mode-text' }, 'Live Performance')
 
                   const sections = [];
 
-                  // Add LIVE section if there are current events
                   if (allCurrentEvents.length > 0) {
                     sections.push(
-                      React.createElement('div', {
+                      React.createElement('div',{
                         key: 'live-section',
                         className: 'transition-all duration-500 transform scale-105'
                       },
                         React.createElement('div', {
-className: 'rounded-lg border-2 p-4 md:p-6 bg-gradient-to-r from-purple-600/20 to-pink-600/20 border-purple-400 shadow-lg shadow-purple-500/25 live-box-bg'                        },
+                          className: 'rounded-lg border-2 p-4 md:p-6 bg-gradient-to-r from-purple-600/20 to-pink-600/20 border-purple-400 shadow-lg shadow-purple-500/25 live-box-bg'
+                        },
                           React.createElement('div', { className: 'flex items-center gap-3 mb-4' },
-                            // React.createElement('div', { className: 'text-xl md:text-2xl font-bold text-purple-500' }, 'LIVE'),
-                              React.createElement('div', { className: 'flex items-center gap-2 bg-purple-600 px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-medium' },
+                            React.createElement('div', { className: 'flex items-center gap-2 bg-purple-600 px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-medium' },
                               React.createElement('div', { className: 'w-2 h-2 bg-white rounded-full animate-pulse' }),
                               React.createElement('span', { className: 'hidden md:inline' }, 'HAPPENING NOW'),
                               React.createElement('span', { className: 'md:hidden' }, 'LIVE')
@@ -599,15 +550,17 @@ className: 'rounded-lg border-2 p-4 md:p-6 bg-gradient-to-r from-purple-600/20 t
                           ),
                           React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4' },
                             allCurrentEvents.map((event, eventIndex) => {
+                              const venueClass = event.venue === 'BLACK BOX' ? 'artist-box-blackbox' : 'artist-box-angar';
+                              const borderColor = getVenueColor(event.venue);
                               return React.createElement('div', {
                                 key: eventIndex,
-                                className: `border-l-4 pl-3 md:pl-4 py-2 md:py-3 rounded-r transition-all cursor-pointer hover:shadow-md artist-box-${event.type} shadow-md transform scale-105`,
+                                className: `border-l-4 ${borderColor} pl-3 md:pl-4 py-2 md:py-3 rounded-r transition-all cursor-pointer hover:shadow-md ${venueClass} shadow-md transform scale-105`,
                                 onClick: () => setSelectedArtist(event)
                               },
                                 React.createElement('div', { className: 'flex items-center gap-2 mb-1 md:mb-2' },
-                                  React.createElement('svg', { className: 'w-3 h-3 md:w-4 md:h-4 text-purple-400', fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z' })),
+                                  React.createElement('svg', { className: `w-3 h-3 md:w-4 md:h-4 ${event.venue === 'BLACK BOX' ? 'text-purple-400' : 'text-blue-400'}`, fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z' })),
                                   React.createElement('span', { className: 'font-medium text-xs md:text-sm text-gray-800' }, event.venue),
-                                  React.createElement('div', null, getTypeIcon(event.type))
+                                    React.createElement('div', null, getTypeIcon(event.type, event.venue))
                                 ),
                                 React.createElement('div', { className: 'font-bold text-xs md:text-sm leading-tight text-gray-900' }, event.artist)
                               );
@@ -618,7 +571,6 @@ className: 'rounded-lg border-2 p-4 md:p-6 bg-gradient-to-r from-purple-600/20 t
                     );
                   }
 
-                  // Add regular time slots (with mixed current/future events, or pure future/past events)
                   nonCurrentTimeSlots.forEach((time, index) => {
                     const events = groupedEvents[time].filter(event =>
                       getPerformanceStatus(event, festivalData[selectedDay], selectedDay) !== 'current'
@@ -632,31 +584,34 @@ className: 'rounded-lg border-2 p-4 md:p-6 bg-gradient-to-r from-purple-600/20 t
                         className: 'transition-all duration-500'
                       },
                         React.createElement('div', {
-                            className: `rounded-lg border-2 p-4 md:p-6 ${events.some(event => getPerformanceStatus(event, festivalData[selectedDay], selectedDay) === 'past') ? 'bg-gray-900/60 border-gray-800' : 'bg-gray-800/30 border-gray-700'}`
+className: `rounded-lg border-2 p-4 md:p-6 ${events.some(event => getPerformanceStatus(event, festivalData[selectedDay], selectedDay) === 'past') ? 'bg-gray-900/70 border-gray-800' : 'bg-gray-800/50 border-gray-700'}`
                         },
                           React.createElement('div', { className: 'flex items-center gap-3 mb-4' },
-React.createElement('div', {
-  className: `text-xl md:text-2xl font-bold ${
-    events.some(event => getPerformanceStatus(event, festivalData[selectedDay], selectedDay) === 'past')
-      ? 'text-black'
-      : 'text-gray-300'
-  }`
-}, time)                          ),
+                            React.createElement('div', {
+                              className: `text-xl md:text-2xl font-bold ${
+                                events.some(event => getPerformanceStatus(event, festivalData[selectedDay], selectedDay) === 'past')
+                                  ? 'text-black'
+                                  : 'text-gray-300'
+                              }`
+                            }, time)
+                          ),
                           React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4' },
                             events.map((event, eventIndex) => {
                               const status = getPerformanceStatus(event, festivalData[selectedDay], selectedDay);
                               const isPast = status === 'past';
+                              const venueClass = event.venue === 'BLACK BOX' ? 'artist-box-blackbox' : 'artist-box-angar';
+                              const borderColor = getVenueColor(event.venue);
                               return React.createElement('div', {
                                 key: eventIndex,
-                                className: `border-l-4 pl-3 md:pl-4 py-2 md:py-3 rounded-r transition-all cursor-pointer hover:shadow-md artist-box-${event.type} ${
-                                  status === 'past' ? 'artist-box-past' : ''
+                                className: `border-l-4 ${isPast ? 'border-l-gray-500' : borderColor} pl-3 md:pl-4 py-2 md:py-3 rounded-r transition-all cursor-pointer hover:shadow-md ${
+                                  isPast ? 'artist-box-past' : venueClass
                                 } ${isPast ? 'transform scale-95 hover:scale-100' : ''}`,
                                 onClick: () => setSelectedArtist(event)
                               },
                                 React.createElement('div', { className: 'flex items-center gap-2 mb-1 md:mb-2' },
-                                  React.createElement('svg', { className: `w-3 h-3 md:w-4 md:h-4 ${isPast ? 'text-gray-500' : 'text-purple-400'}`, fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z' })),
+                                  React.createElement('svg', { className: `w-3 h-3 md:w-4 md:h-4 ${isPast ? 'text-gray-500' : event.venue === 'BLACK BOX' ? 'text-purple-400' : 'text-blue-400'}`, fill: 'currentColor', viewBox: '0 0 24 24' }, React.createElement('path', { d: 'M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z' })),
                                   React.createElement('span', { className: `font-medium text-xs md:text-sm ${isPast ? 'text-gray-600' : 'text-gray-800'}` }, event.venue),
-                                  React.createElement('div', { className: isPast ? 'opacity-50' : '' }, getTypeIcon(event.type))
+                                    React.createElement('div', { className: isPast ? 'opacity-50' : '' }, getTypeIcon(event.type, event.venue))
                                 ),
                                 React.createElement('div', { className: `font-bold text-xs md:text-sm leading-tight ${isPast ? 'text-gray-700' : 'text-gray-900'}` }, event.artist)
                               );
@@ -672,24 +627,26 @@ React.createElement('div', {
               )
             ),
 
-            // Artist Description Modal
             selectedArtist && React.createElement('div', {
               className: 'fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4',
               onClick: () => setSelectedArtist(null)
             },
               React.createElement('div', {
-                className: 'border border-purple-500/30 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto artist-modal',                onClick: e => e.stopPropagation()
+                className: 'border border-[#fc00ff]/30 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto artist-modal',
+                onClick: e => e.stopPropagation()
               },
                 React.createElement('div', { className: 'p-6' },
                   React.createElement('div', { className: 'flex items-start justify-between mb-4' },
                     React.createElement('div', null,
-                      React.createElement('h3', { className: 'text-xl font-bold text-white mb-1' }, selectedArtist.artist),
-                      React.createElement('div', { className: 'flex items-center gap-2 text-purple-300 text-sm' },
+                        React.createElement('h3', {
+                          className: 'text-xl font-bold mb-1',
+                          style: { color: selectedArtist.venue === 'BLACK BOX' ? '#fc00ff' : '#00ffff' }
+                        }, selectedArtist.artist),
+                        React.createElement('div', { className: 'flex items-center gap-2 text-white text-sm' },
                         React.createElement('span', null, getPerformanceTimeSlot(selectedArtist, allEventsForDay)),
-                        // React.createElement('span', null, selectedArtist.time),
                         React.createElement('span', null, '•'),
                         React.createElement('span', null, selectedArtist.venue),
-                        getTypeIcon(selectedArtist.type)
+                            getTypeIcon(selectedArtist.type, selectedArtist.venue)
                       )
                     ),
                     React.createElement('button', {
@@ -704,8 +661,8 @@ React.createElement('div', {
               )
             ),
 
-            React.createElement('div', { className: 'mt-12 bg-black/50 backdrop-blur-sm border-t border-purple-500/30 p-6' },
-              React.createElement('div', { className: 'max-w-6xl mx-auto text-center text-purple-300' },
+            React.createElement('div', { className: 'mt-12 bg-black/50 backdrop-blur-sm border-t border-[#fc00ff]/30 p-6'},
+              React.createElement('div', { className: 'max-w-6xl mx-auto text-center text-[#fe80ff] text-sm' },
                 React.createElement('p', { className: 'text-sm' }, `✨HOPE YOU HAD A GREAT TIME!✨`)
               )
             )
