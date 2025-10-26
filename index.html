@@ -203,7 +203,7 @@ body.dark-mode .bg-gray-800 {
         const FestivalSchedule = () => {
           const [currentTime, setCurrentTime] = useState(new Date());
           const [selectedVenue, setSelectedVenue] = useState('ALL');
-          const [selectedDay, setSelectedDay] = useState('17.10');
+          const [selectedDay, setSelectedDay] = useState('01.11');
           const [selectedArtist, setSelectedArtist] = useState(null);
           const [selectedSlot, setSelectedSlot] = useState(null);
           const [showPastPerformances, setShowPastPerformances] = useState(true);
@@ -224,34 +224,34 @@ body.dark-mode .bg-gray-800 {
             return () => clearInterval(timer);
           }, []);
 
-          const festivalData = {
-           '17.10': [
-               { time: '09:00', venue: 'ANGAR', artist: 'Roman K', type: 'dj', description: ''},
-               { time: '09:00', venue: 'BLACK BOX', artist: 'Serge Jazzmate', type: 'dj', description: ''},
-               { time: '10:00', venue: 'ANGAR', artist: 'The Against', type: 'live', description: ''},
-               { time: '13:30', venue: 'BLACK BOX', artist: 'Bedroom Talks', type: 'live', description: ''},
-               { time: '14:00', venue: 'ANGAR', artist: 'Motoblock', type: 'live', description: ''},
-               { time: '14:30', venue: 'BLACK BOX', artist: 'Primal Baby', type: 'live', description: '*'},
-               { time: '15:00', venue: 'ANGAR', artist: 'Kichi Kazuko', type: 'dj', description: ''},
-               { time: '15:30', venue: 'BLACK BOX', artist: 'Ship Her Son', type: 'live', description: ''},
-               { time: '16:30', venue: 'ANGAR', artist: 'Vril', type: 'live', description: '*'},
-               { time: '16:30', venue: 'BLACK BOX', artist: 'Lvcerate', type: 'live', description: ''},
-               { time: '18:30', venue: 'ANGAR', artist: 'Recid', type: 'dj', description: ''},
-               { time: '19:30', venue: 'BLACK BOX', artist: 'Kris Baha (AU)', type: 'live', description: '*'},
-               { time: '21:30', venue: 'BLACK BOX', artist: 'Hungry Boys', type: 'live', description: ''},
+         const festivalData = {
+           '01.11': [
+               { time: '14:00', venue: 'ANGAR', artist: 'Roman K', type: 'dj', description: 'Кримський диджей, резидент Closer і засновник Closer Connections Роман — автор проєкту «Unexplored Abyss» з hybrid-live сетами. Працює над власною музикою, досліджуючи зв`язок між теперішнім і майбутнім.'},
+               { time: '14:00', venue: 'BLACK BOX', artist: 'Serge Jazzmate', type: 'dj', description: 'Резидент вечірок LOW (співзасновник) і клубу ∄, український діджей з понад 18-річним досвідом на електронній сцені. '},
+               { time: '16:00', venue: 'ANGAR', artist: 'The Against', type: 'live', description: 'київський live-дует The Against — експериментують з ebm, industrial, вокалом та noise протягом 5 років, зараз фокусуючись на техно. Випустили 3 EP, останній «Mental Noise» на берлінському лейблі XIMG.'},
+               { time: '16:30', venue: 'BLACK BOX', artist: 'Bedroom Talks', type: 'live', description: 'Рівненський продюсер Євген Ковальчук — автор coldwave-проєкту Bedroom Talks з релізами на Holy Hour Records та Oráculo Records. Від дебютної платівки “Machines Know No Love” до повноформатного альбому “Call Me Malespero” — презентує новий лайв-сет на фестивалі.'},
+               { time: '17:00', venue: 'ANGAR', artist: 'Motoblok', type: 'live', description: 'Тернопільський продюсер, диджей і засновник фестивалю «Гамселить» Ярослав — творець лейблу «Pincet», що видав дебютний реліз Kurs Valüt. Його звучання охоплює готичний диджеїнг, сай-транс, пост-індастріал та ЕВМ.'},
+               { time: '17:30', venue: 'BLACK BOX', artist: 'Primal Baby', type: 'live', description: '*'},
+               { time: '18:00', venue: 'ANGAR', artist: 'Kichi Kazuko', type: 'dj', description: 'Представниця андеграундної електронної сцени Києва, засновниця промо-платформи Dots та лейблу Kazuko Music. Спеціалізується на модульному синтезі, створюючи гіпнотичне техно-звучання з кислотними та трансовими елементами.'},
+               { time: '18:30', venue: 'BLACK BOX', artist: 'Ship Her Son', type: 'live', description: 'Львівський продюсер і дизайнер Антон Шиферсон — засновник проєкту, що поєднує постіндастріал, ЕВМ, дарквейв і ньювейв. Автор жанру "dnipropop" з колабораціями разом з 1914, "Паліндромом" і "вагоновожатими".'},
+               { time: '19:30', venue: 'ANGAR', artist: 'Vril', type: 'live', description: '* Представник dub techno та мінімалістичного техно з релізами на лейблі Delsin, включаючи альбом Portal. '},
+               { time: '19:30', venue: 'BLACK BOX', artist: 'Lvcerate', type: 'live', description: 'засновник проєкту «Cultivating Discipline» Валера Лацерат — один з провідних артистів українського темно-прогресивного авангарду з релізами на «X-IMG», «Khoinix», «SOIL» і «система». Представить свій перший лайв-сет на фестивалі.'},
+               { time: '20:30', venue: 'ANGAR', artist: 'Recid', type: 'dj', description: 'Резидент клубу ∄ з орієнтацією на детройтське техно-звучання. Випускає музику на лейблах Arts, Coincidence, Corridor Audio та Nicz, є частиною сучасної української техно-сцени.​​​​​​​​​​​​​​​​'},
+               { time: '20:30', venue: 'BLACK BOX', artist: 'Kris Baha (AU)', type: 'live', description: '* Австралійський диджей і продюсер, засновник лейблу Camisole з релізами на Correspondant та колабораціями з dane//close, Eva (101) aka Boys Noize. Його звучання поєднує ЕВМ, індастріал та електронний авангард.'},
+               { time: '21:30', venue: 'BLACK BOX', artist: 'Hungry Boys', type: 'live', description: 'Київський електронний постпанк-дует з треками у компіляціях «Next Wave Acid Punx DEUX» від Curses (Eskimo Recordings) та «РУХ» від лейблу «Worn Pop».'},
             ],
-            '18.10': [
-                { time: '12:00', venue: 'ANGAR', artist: 'Katja Stieber & Gothivka', type: 'dj', description: ''},
-                { time: '12:00', venue: 'BLACK BOX', artist: 'Shults.Sashaa', type: 'dj', description: ''},
-                { time: '13:30', venue: 'ANGAR', artist: 'Rare DM (US)', type: 'live', description: '*'},
-                { time: '13:30', venue: 'BLACK BOX', artist: 'Raavel', type: 'dj', description: ''},
-                { time: '16:30', venue: 'ANGAR', artist: 'Maria & Magdalina & Bunht', type: 'live', description: ''},
-                { time: '17:30', venue: 'ANGAR', artist: 'Kurs Valut', type: 'live', description: ''},
-                { time: '17:30', venue: 'BLACK BOX', artist: 'Jensen Interceptor', type: 'live', description: '*'},
-                { time: '18:30', venue: 'ANGAR', artist: 'Bellis', type: 'dj', description: ''},
-                { time: '18:30', venue: 'BLACK BOX', artist: 'Umwelt (FR)', type: 'live', description: '*'},
-                { time: '20:30', venue: 'BLACK BOX', artist: 'Alex Savage', type: 'dj', description: ''},
-                { time: '21:00', venue: 'ANGAR', artist: ' Parrish Smith (NL)', type: 'live', description: '*'},
+            '02.11': [
+                { time: '14:00', venue: 'ANGAR', artist: 'Katja Stieber & Gothivka', type: 'dj', description: ''},
+                { time: '14:00', venue: 'BLACK BOX', artist: 'Shults.Sashaa', type: 'dj', description: 'Резидент Closer і співвласник рекорд-стору «Octan» — диджей, що спеціалізується на різножанрових сетах з техно, електро та брейксами. Відомий творчим підходом до звукового досвіду.'},
+                { time: '16:30', venue: 'ANGAR', artist: 'Rare DM (US)', type: 'live', description: '* Бруклінська продюсерка Ерін Хоагг, колишня студентка Fashion Institute of Technology, донька барабанщика. Змішує блогхаус, дарквейв, сінті-поп і електроклеш, спираючись на рідкісність як концепт. '},
+                { time: '16:30', venue: 'BLACK BOX', artist: 'Raavel', type: 'dj', description: 'Київський диджей і продюсер Валерій Raavel — автор сольної платівки “Insect Replicant” на лейблі DJ MELL G. Його трек “Wakalaka” увійшов до компіляції Хелени Хауфф для культового клубу Fabric, поєднуючи гетто-електро та хіп-хоп.'},
+                { time: '17:30', venue: 'ANGAR', artist: 'Mariia & Magdalyna & Bunht', type: 'live', description: 'ексклюзивна прем`єра: електронний лайв-перформанс "Earth is a beautiful place" від проєкту Mariia&Magdalyna (Маруся та Надія) і київського продюсера Bunht (Ярослав). Bunht відомий роботою над проєктами «Тонка», «ЩукаРиба», лейблом «Minor Cakes» та альбомом «We Keep On Moving». '},
+                { time: '18:30', venue: 'ANGAR', artist: 'Kurs Valüt', type: 'live', description: 'Дніпровський дует Kurs Valüt — Євген Гордєєв і Євген Касьян, співзасновники лейблу «Dnipropop». Їхнє звучання поєднує дарквейв, ньювейв та ЕВМ з філософією авторської диктатури.'},
+                { time: '18:30', venue: 'BLACK BOX', artist: 'Jensen Interceptor', type: 'live', description: '*'},
+                { time: '19:30', venue: 'ANGAR', artist: 'Bèllis', type: 'dj', description: 'Співорганізаторка серії вечірок «Hybrid Moment» та кураторка шоу «Inner Voyage» на 20ft радіо. Її сети поєднують психоделічний даунтемпо, нуарне диско та нью-біт з нотами авангардної електроніки.'},
+                { time: '19:30', venue: 'BLACK BOX', artist: 'Umwelt (FR)', type: 'live', description: '* Ліонський діджей і продюсер з рейв і техно-сцени 90-х — засновник лейблів Rave Or Die та NewFlesh Records. Його темне кінематографічне звучання поєднує класику з сучасністю'},
+                { time: '20:30', venue: 'BLACK BOX', artist: 'Alex Savage', type: 'dj', description: 'Резидент Closer і співзасновник лейблу «Progressive Future», київський діджей і продюсер, що спеціалізується на темному електро, динамічному брейкбіті та глибокому дабстепі.'},
+                { time: '21:00', venue: 'ANGAR', artist: ' Parrish Smith (NL)', type: 'live', description: '* Нідерландський артист Parrish Smith — підписант Dekmantel і засновник вечірки "Burst City" з сурінамським корінням. Його звучання змішує рок, техно та індастріал під слоганом "No Elitism, No Prejudices, No Genres, No Codes".'},
             ]
           };
 
@@ -413,12 +413,12 @@ const getTypeIcon = (type, venue) => {
                         React.createElement('span', null, currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }))
                       ),
                       React.createElement('div', { className: 'flex bg-gray-800/50 rounded-lg p-1' },
-                        ['17.10', '18.10'].map(day =>
+                        ['01.11', '02.11'].map(day =>
                           React.createElement('button', {
                             key: day,
                             onClick: () => setSelectedDay(day),
                             className: `px-2 md:px-4 py-1 md:py-2 rounded text-sm transition-all ${selectedDay === day ? 'bg-[#fc00ff] text-white' : 'text-gray-300 hover:text-white'}`
-                          }, day === '17.10' ? 'ПТ 17' : 'СБ 18')
+                          }, day === '01.11' ? 'СБ 01' : 'НД 02')
                         )
                       )
                     )
